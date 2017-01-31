@@ -13,7 +13,11 @@
 package stablesort;
 
 import org.junit.Before;
+import org.junit.Test;
+import util.Sortable;
 import util.SortableFactory;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test cases for StableSorter.
@@ -28,5 +32,11 @@ public class StableSorterTest {
     public void setup() {
         iFactory = new SortableFactory<>();
         sorter = new StableSorter();
+    }
+    
+    @Test // 1
+    public void sortEmptyArray() {
+        Sortable<Integer>[] result = sorter.stableSort(new Sortable[0]);
+        assertEquals(0, result.length);
     }
 }
