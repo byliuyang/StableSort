@@ -49,4 +49,18 @@ public class StableSorterTest {
         assertEquals(new Integer(1), result[0].getPayload());
         assertEquals(0, result[0].getIndex());
     }
+    
+    
+    @Test // 3
+    public void sortTwoSortedElements() throws Exception {
+        Sortable<Integer>[] sortables = new Sortable[2];
+        sortables[0] = new Sortable<>(1, 0);
+        sortables[1] = new Sortable<>(2, 1);
+        Sortable<Integer>[] result = sorter.stableSort(sortables);
+        assertEquals(2, result.length);
+        assertEquals(new Integer(1), result[0].getPayload());
+        assertEquals(0, result[0].getIndex());
+        assertEquals(new Integer(2), result[1].getPayload());
+        assertEquals(1, result[1].getIndex());
+    }
 }
