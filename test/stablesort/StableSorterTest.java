@@ -42,20 +42,24 @@ public class StableSorterTest {
     
     @Test // 2
     public void sortOneElement() {
-        Sortable<Integer>[] sortables = new Sortable[1];
-        sortables[0] = new Sortable<>(1, 0);
+        final Integer FIRST_INT = 1;
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT);
         Sortable<Integer>[] result = sorter.stableSort(sortables);
         assertEquals(1, result.length);
-        assertEquals(new Integer(1), result[0].getPayload());
+        assertEquals(FIRST_INT, result[0].getPayload());
         assertEquals(0, result[0].getIndex());
     }
     
     
     @Test // 3
     public void sortTwoSortedElements() throws Exception {
-        Sortable<Integer>[] sortables = new Sortable[2];
-        sortables[0] = new Sortable<>(1, 0);
-        sortables[1] = new Sortable<>(2, 1);
+        final Integer FIRST_INT = 1,
+                SECOND_INT = 2;
+        
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT);
+
         Sortable<Integer>[] result = sorter.stableSort(sortables);
         assertEquals(2, result.length);
         assertEquals(new Integer(1), result[0].getPayload());
@@ -66,14 +70,17 @@ public class StableSorterTest {
     
     @Test // 4
     public void sortTwoElementInAscendingOrder() throws Exception {
-        Sortable<Integer>[] sortables = new Sortable[2];
-        sortables[0] = new Sortable<>(2, 0);
-        sortables[1] = new Sortable<>(1, 1);
+        final Integer FIRST_INT = 2,
+                SECOND_INT = 1;
+    
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT);
+        
         Sortable<Integer>[] result = sorter.stableSort(sortables);
         assertEquals(2, result.length);
-        assertEquals(new Integer(1), result[0].getPayload());
+        assertEquals(SECOND_INT, result[0].getPayload());
         assertEquals(1, result[0].getIndex());
-        assertEquals(new Integer(2), result[1].getPayload());
+        assertEquals(FIRST_INT, result[1].getPayload());
         assertEquals(0, result[1].getIndex());
     }
 }

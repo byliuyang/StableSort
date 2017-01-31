@@ -24,7 +24,74 @@ public class StableSorter implements StableSort {
      */
     @Override
     public <T extends Comparable<T>> T[] stableSort(T... items) {
-        // TODO Implement this method.
+        // TODO.md Implement this method.
+        mergeSort(items);
         return items;
+    }
+    
+    private <T extends Comparable<T>> void mergeSort(T... items) {
+        mergeSortHelper(items, 0, items.length - 1);
+    }
+    
+    private <T extends Comparable<T>> void mergeSortHelper(T[] items, int start, int end) {
+        if (isSorted(start, end)) return;
+        
+        int mid = calcMiddleIndex(start, end);
+        
+        mergeSortHelper(items, start, mid);
+        mergeSortHelper(items, mid + 1, end);
+        
+        int leftLength = leftSubArraySize(start, mid);
+        int rightLength = rightSubArraySize(mid, end);
+        
+        T[] leftSubArray = copySubArray(items, start, mid);
+        T[] rightSubArray = copySubArray(items, mid + 1, end);
+        
+        int leftIndex = 0, rightIndex = 0, resIndex = 0;
+        while (!(isEmpty(leftIndex, leftLength) && isEmpty(rightIndex, rightLength))) {
+            if (isEmpty(leftIndex, leftLength))
+                copyElement(rightSubArray, rightIndex++, items, resIndex++);
+            else if (isEmpty(rightIndex, rightLength))
+                copyElement(leftSubArray, leftIndex++, items, resIndex++);
+            else if (lessThan(leftSubArray[leftIndex], rightSubArray[rightIndex]))
+                copyElement(leftSubArray, leftIndex++, items, resIndex++);
+            else copyElement(rightSubArray, rightIndex++, items, resIndex++);
+        }
+    }
+    
+    private int calcMiddleIndex(int start, int end) {
+        return (start + end) / 2;
+    }
+    
+    private int leftSubArraySize(int start, int mid) {
+        return mid - start + 1;
+    }
+    
+    private int rightSubArraySize(int start, int mid) {
+        return mid - start;
+    }
+    
+    private <T extends Comparable<T>> T[] copySubArray(T[] src, int start, int end) {
+        T[] newArray = (T[]) new Comparable[end - start + 1];
+        for (int i = start; i <= end; i++)
+            newArray[i - start] = src[i];
+        return newArray;
+    }
+    
+    private boolean isEmpty(int index, int length) {
+        return index >= length;
+    }
+    
+    private <T extends Comparable<T>> boolean lessThan(T first, T second) {
+        return first.compareTo(second) <= 0;
+    }
+    
+    private <T extends Comparable<T>> void copyElement(T[] src, int srcIndex, T[] dest, int
+            destIndex) {
+        dest[destIndex] = src[srcIndex];
+    }
+    
+    private boolean isSorted(int start, int end) {
+        return end <= start;
     }
 }
