@@ -39,4 +39,14 @@ public class StableSorterTest {
         Sortable<Integer>[] result = sorter.stableSort(new Sortable[0]);
         assertEquals(0, result.length);
     }
+    
+    @Test // 2
+    public void sortOneElement() {
+        Sortable<Integer>[] sortables = new Sortable[1];
+        sortables[0] = new Sortable<>(1, 0);
+        Sortable<Integer>[] result = sorter.stableSort(sortables);
+        assertEquals(1, result.length);
+        assertEquals(new Integer(1), result[0].getPayload());
+        assertEquals(0, result[0].getIndex());
+    }
 }
