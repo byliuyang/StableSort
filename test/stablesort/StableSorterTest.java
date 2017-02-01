@@ -35,13 +35,13 @@ public class StableSorterTest {
     }
     
     @Test // 1
-    public void sortEmptyArray() {
+    public void sortEmptyArrayTest() {
         Sortable<Integer>[] result = sorter.stableSort(new Sortable[0]);
         assertEquals(0, result.length);
     }
     
     @Test // 2
-    public void sortOneElement() {
+    public void sortOneElementTest() {
         final Integer FIRST_INT = 1;
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
         Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT);
@@ -53,13 +53,12 @@ public class StableSorterTest {
     
     
     @Test // 3
-    public void sortTwoSortedElements() throws Exception {
-        final Integer FIRST_INT = 1,
-                SECOND_INT = 2;
+    public void sortTwoSortedElementsTest() throws Exception {
+        final Integer FIRST_INT = 1, SECOND_INT = 2;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
         Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT);
-
+        
         Sortable<Integer>[] result = sorter.stableSort(sortables);
         assertEquals(2, result.length);
         assertEquals(new Integer(1), result[0].getPayload());
@@ -69,10 +68,9 @@ public class StableSorterTest {
     }
     
     @Test // 4
-    public void sortTwoElementInAscendingOrder() throws Exception {
-        final Integer FIRST_INT = 2,
-                SECOND_INT = 1;
-    
+    public void sortTwoElementInAscendingOrderTest() throws Exception {
+        final Integer FIRST_INT = 2, SECOND_INT = 1;
+        
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
         Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT);
         
@@ -82,5 +80,23 @@ public class StableSorterTest {
         assertEquals(1, result[0].getIndex());
         assertEquals(FIRST_INT, result[1].getPayload());
         assertEquals(0, result[1].getIndex());
+    }
+    
+    @Test // 5
+    public void sortThreeElementInAscendingOrderTest() throws Exception {
+        final Integer FIRST_INT = 3, SECOND_INT = 2, THIRD_INT = 1;
+        
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT,
+                                                                          THIRD_INT);
+        
+        Sortable<Integer>[] result = sorter.stableSort(sortables);
+        assertEquals(3, result.length);
+        assertEquals(THIRD_INT, result[0].getPayload());
+        assertEquals(2, result[0].getIndex());
+        assertEquals(SECOND_INT, result[1].getPayload());
+        assertEquals(1, result[1].getIndex());
+        assertEquals(FIRST_INT, result[2].getPayload());
+        assertEquals(0, result[2].getIndex());
     }
 }

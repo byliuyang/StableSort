@@ -1,5 +1,12 @@
 TODO List:
  - [x] Sort empty array -> empty array
  - [x] Sort [1] -> [1]
- - [x] sort [1, 2] -> [1, 2]
- - [x] sort [2, 1] -> [1, 2]
+ - [x] Sort [1, 2] -> [1, 2]
+ - [x] Sort [2, 1] -> [1, 2]
+ - [x] Sort [3, 2, 1] -> [1, 2, 3]
+ - [ ] Sort [4, 1, 4] -> [1, 4, 4], stable
+ - [ ] Sort [2, 2, 2] -> [2, 2, 2], stable
+ - [ ] Sort [6, 6, 5] -> [6, 6, 5], stable
+ - [ ] Sort [8, 2, 2] -> [2, 2, 8], stable
+ - [ ] Sort [7, 5, 4, 5] -> [4, 4, 5, 7], stable
+ - [ ] Sort [5, 3, 5, 4, 3] -> [3, 3, 4, 5, 5], stable

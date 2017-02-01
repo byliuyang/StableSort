@@ -40,13 +40,16 @@ public class StableSorter implements StableSort {
         
         mergeSortHelper(items, start, mid);
         mergeSortHelper(items, mid + 1, end);
-        
+        merge(items, start, mid, end);
+    }
+    
+    private <T extends Comparable<T>> void merge(T[] items, int start, int mid,int end) {
         int leftLength = leftSubArraySize(start, mid);
         int rightLength = rightSubArraySize(mid, end);
-        
+    
         T[] leftSubArray = copySubArray(items, start, mid);
         T[] rightSubArray = copySubArray(items, mid + 1, end);
-        
+    
         int leftIndex = 0, rightIndex = 0, resIndex = 0;
         while (!(isEmpty(leftIndex, leftLength) && isEmpty(rightIndex, rightLength))) {
             if (isEmpty(leftIndex, leftLength))
