@@ -41,7 +41,7 @@ public class StableSorterTest {
     }
     
     @Test // 2
-    public void sortOneElementTest() {
+    public void sortOneNumberTest() {
         final Integer FIRST_INT = 1;
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
         Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT);
@@ -53,7 +53,7 @@ public class StableSorterTest {
     
     
     @Test // 3
-    public void sortTwoSortedElementsTest() throws Exception {
+    public void sortTwoSortedNumbersTest() throws Exception {
         final Integer FIRST_INT = 1, SECOND_INT = 2;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -68,7 +68,7 @@ public class StableSorterTest {
     }
     
     @Test // 4
-    public void sortTwoElementInAscendingOrderTest() throws Exception {
+    public void sortTwoNumbersInAscendingOrderTest() throws Exception {
         final Integer FIRST_INT = 2, SECOND_INT = 1;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -83,7 +83,7 @@ public class StableSorterTest {
     }
     
     @Test // 5
-    public void sortThreeElementInAscendingOrderTest() throws Exception {
+    public void sortThreeNumbersTest() throws Exception {
         final Integer FIRST_INT = 3, SECOND_INT = 2, THIRD_INT = 1;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -101,7 +101,7 @@ public class StableSorterTest {
     }
     
     @Test // 6
-    public void stableSortThreeElementsTest() throws Exception {
+    public void stableSortThreeNumbersTest() throws Exception {
         final Integer FIRST_INT = 4, SECOND_INT = 1, THIRD_INT = 4;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -119,7 +119,7 @@ public class StableSorterTest {
     }
     
     @Test // 7
-    public void stableSortThreeEqualElementsTest() throws Exception {
+    public void stableSortThreeEqualNumbersTest() throws Exception {
         final Integer FIRST_INT = 2, SECOND_INT = 2, THIRD_INT = 2;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -137,7 +137,7 @@ public class StableSorterTest {
     }
     
     @Test // 8
-    public void stableSortTwoEqualKeyHeadTest() throws Exception {
+    public void stableSortTwoEqualNumbersHeadTest() throws Exception {
         final Integer FIRST_INT = 6, SECOND_INT = 6, THIRD_INT = 5;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -155,7 +155,7 @@ public class StableSorterTest {
     }
     
     @Test // 9
-    public void stableSortTwoEqualKeyBackTest() throws Exception {
+    public void stableSortTwoEqualNumbersBackTest() throws Exception {
         final Integer FIRST_INT = 8, SECOND_INT = 2, THIRD_INT = 2;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -173,7 +173,7 @@ public class StableSorterTest {
     }
     
     @Test // 10
-    public void stableSortFourElementsTwoEqualKeysTest() throws Exception {
+    public void stableSortFourNumbersTwoEqualKeysTest() throws Exception {
         final Integer FIRST_INT = 7, SECOND_INT = 5, THIRD_INT = 4, FORTH_INT = 5;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -193,7 +193,7 @@ public class StableSorterTest {
     }
     
     @Test // 11
-    public void stableSortFiveElementsTwoPairsTest() throws Exception {
+    public void stableSortFiveNumbersTwoPairsTest() throws Exception {
         final Integer FIRST_INT = 5, SECOND_INT = 3, THIRD_INT = 5, FORTH_INT = 4, FIFTH_INT = 3;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();

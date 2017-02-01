@@ -1,5 +1,11 @@
-TODO List:
+TODO List: Acceptance tests
+===
+Common test cases
+---
  - [x] Sort empty array -> empty array
+
+Integer test cases
+---
  - [x] Sort [1] -> [1]
  - [x] Sort [1, 2] -> [1, 2]
  - [x] Sort [2, 1] -> [1, 2]
@@ -10,3 +16,9 @@ TODO List:
  - [x] Sort [8, 2, 2] -> [2, 2, 8], stable
  - [x] Sort [7, 5, 4, 5] -> [4, 5, 5, 7], stable
  - [x] Sort [5, 3, 5, 4, 3] -> [3, 3, 4, 5, 5], stable
+
+Char test cases
+---
+ - [ ] Sort ['a'] -> ['a']
+ - [ ] Sort ['a', 'b'] -> ['a', 'b']
+ - [ ] Sort ['e', 'f', 'h', 'f'] -> ['e', 'f', 'f', 'h'], stable
