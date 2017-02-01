@@ -191,4 +191,27 @@ public class StableSorterTest {
         assertEquals(FIRST_INT, result[3].getPayload());
         assertEquals(0, result[3].getIndex());
     }
+    
+    @Test // 11
+    public void stableSortFiveElementsTwoPairsTest() throws Exception {
+        final Integer FIRST_INT = 5, SECOND_INT = 3, THIRD_INT = 5, FORTH_INT = 4, FIFTH_INT = 3;
+        
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT,
+                                                                          THIRD_INT, FORTH_INT,
+                                                                          FIFTH_INT);
+        
+        Sortable<Integer>[] result = sorter.stableSort(sortables);
+        assertEquals(5, result.length);
+        assertEquals(SECOND_INT, result[0].getPayload());
+        assertEquals(1, result[0].getIndex());
+        assertEquals(FIFTH_INT, result[1].getPayload());
+        assertEquals(4, result[1].getIndex());
+        assertEquals(FORTH_INT, result[2].getPayload());
+        assertEquals(3, result[2].getIndex());
+        assertEquals(FIRST_INT, result[3].getPayload());
+        assertEquals(0, result[3].getIndex());
+        assertEquals(THIRD_INT, result[4].getPayload());
+        assertEquals(2, result[4].getIndex());
+    }
 }
