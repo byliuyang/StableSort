@@ -24,7 +24,6 @@ public class StableSorter implements StableSort {
      */
     @Override
     public <T extends Comparable<T>> T[] stableSort(T... items) {
-        // TODO.md Implement this method.
         mergeSort(items);
         return items;
     }
@@ -56,7 +55,7 @@ public class StableSorter implements StableSort {
                 copyElement(rightSubArray, rightIndex++, items, resIndex++);
             else if (isEmpty(rightIndex, rightLength))
                 copyElement(leftSubArray, leftIndex++, items, resIndex++);
-            else if (lessThan(leftSubArray[leftIndex], rightSubArray[rightIndex]))
+            else if (lessOrEqual(leftSubArray[leftIndex], rightSubArray[rightIndex]))
                 copyElement(leftSubArray, leftIndex++, items, resIndex++);
             else copyElement(rightSubArray, rightIndex++, items, resIndex++);
         }
@@ -85,7 +84,7 @@ public class StableSorter implements StableSort {
         return index >= length;
     }
     
-    private <T extends Comparable<T>> boolean lessThan(T first, T second) {
+    private <T extends Comparable<T>> boolean lessOrEqual(T first, T second) {
         return first.compareTo(second) <= 0;
     }
     

@@ -99,4 +99,22 @@ public class StableSorterTest {
         assertEquals(FIRST_INT, result[2].getPayload());
         assertEquals(0, result[2].getIndex());
     }
+    
+    @Test // 6
+    public void stableSortThreeElementsTest() throws Exception {
+        final Integer FIRST_INT = 4, SECOND_INT = 1, THIRD_INT = 4;
+
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT,
+                                                                          THIRD_INT);
+
+        Sortable<Integer>[] result = sorter.stableSort(sortables);
+        assertEquals(3, result.length);
+        assertEquals(SECOND_INT, result[0].getPayload());
+        assertEquals(1, result[0].getIndex());
+        assertEquals(FIRST_INT, result[1].getPayload());
+        assertEquals(0, result[1].getIndex());
+        assertEquals(THIRD_INT, result[2].getPayload());
+        assertEquals(2, result[2].getIndex());
+    }
 }
