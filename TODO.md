@@ -7,6 +7,6 @@ TODO List:
  - [x] Sort [4, 1, 4] -> [1, 4, 4], stable
  - [x] Sort [2, 2, 2] -> [2, 2, 2], stable
  - [x] Sort [6, 6, 5] -> [6, 6, 5], stable
- - [ ] Sort [8, 2, 2] -> [2, 2, 8], stable
+ - [x] Sort [8, 2, 2] -> [2, 2, 8], stable
  - [ ] Sort [7, 5, 4, 5] -> [4, 4, 5, 7], stable
  - [ ] Sort [5, 3, 5, 4, 3] -> [3, 3, 4, 5, 5], stable
