@@ -103,11 +103,11 @@ public class StableSorterTest {
     @Test // 6
     public void stableSortThreeElementsTest() throws Exception {
         final Integer FIRST_INT = 4, SECOND_INT = 1, THIRD_INT = 4;
-
+        
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
         Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT,
                                                                           THIRD_INT);
-
+        
         Sortable<Integer>[] result = sorter.stableSort(sortables);
         assertEquals(3, result.length);
         assertEquals(SECOND_INT, result[0].getPayload());
@@ -170,5 +170,25 @@ public class StableSorterTest {
         assertEquals(2, result[1].getIndex());
         assertEquals(FIRST_INT, result[2].getPayload());
         assertEquals(0, result[2].getIndex());
+    }
+    
+    @Test // 10
+    public void stableSortFourElementsTwoEqualKeysTest() throws Exception {
+        final Integer FIRST_INT = 7, SECOND_INT = 5, THIRD_INT = 4, FORTH_INT = 5;
+        
+        SortableFactory<Integer> sortableFactory = new SortableFactory<>();
+        Sortable<Integer>[] sortables = sortableFactory.makeSortableArray(FIRST_INT, SECOND_INT,
+                                                                          THIRD_INT, FORTH_INT);
+        
+        Sortable<Integer>[] result = sorter.stableSort(sortables);
+        assertEquals(4, result.length);
+        assertEquals(THIRD_INT, result[0].getPayload());
+        assertEquals(2, result[0].getIndex());
+        assertEquals(SECOND_INT, result[1].getPayload());
+        assertEquals(1, result[1].getIndex());
+        assertEquals(FORTH_INT, result[2].getPayload());
+        assertEquals(3, result[2].getIndex());
+        assertEquals(FIRST_INT, result[3].getPayload());
+        assertEquals(0, result[3].getIndex());
     }
 }

@@ -49,14 +49,14 @@ public class StableSorter implements StableSort {
         T[] leftSubArray = copySubArray(items, start, mid);
         T[] rightSubArray = copySubArray(items, mid + 1, end);
     
-        int leftIndex = 0, rightIndex = 0, resIndex = 0;
+        int leftIndex = 0, rightIndex = 0, resIndex = start;
         while (!(isEmpty(leftIndex, leftLength) && isEmpty(rightIndex, rightLength))) {
             if (isEmpty(leftIndex, leftLength))
                 copyElement(rightSubArray, rightIndex++, items, resIndex++);
             else if (isEmpty(rightIndex, rightLength))
                 copyElement(leftSubArray, leftIndex++, items, resIndex++);
             else if (lessOrEqual(leftSubArray[leftIndex], rightSubArray[rightIndex]))
-                copyElement(leftSubArray, leftIndex++, items, resIndex++);
+                copyElement(leftSubArray, leftIndex++, items,resIndex++);
             else copyElement(rightSubArray, rightIndex++, items, resIndex++);
         }
     }
