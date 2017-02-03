@@ -25,12 +25,10 @@ import static org.junit.Assert.assertEquals;
  * @version Sep 26, 2016
  */
 public class StableSorterTest {
-    private SortableFactory<Integer> iFactory = null;
     private StableSorter             sorter   = null;
     
     @Before
     public void setup() {
-        iFactory = new SortableFactory<>();
         sorter = new StableSorter();
     }
     
@@ -61,9 +59,9 @@ public class StableSorterTest {
         
         Sortable<Integer>[] result = sorter.stableSort(sortables);
         assertEquals(2, result.length);
-        assertEquals(new Integer(1), result[0].getPayload());
+        assertEquals(FIRST_INT, result[0].getPayload());
         assertEquals(0, result[0].getIndex());
-        assertEquals(new Integer(2), result[1].getPayload());
+        assertEquals(SECOND_INT, result[1].getPayload());
         assertEquals(1, result[1].getIndex());
     }
     
@@ -173,7 +171,7 @@ public class StableSorterTest {
     }
     
     @Test // 10
-    public void stableSortFourNumbersTwoEqualKeysTest() throws Exception {
+    public void stableSortFourNumbersTwoEqualNumbersTest() throws Exception {
         final Integer FIRST_INT = 7, SECOND_INT = 5, THIRD_INT = 4, FORTH_INT = 5;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -193,7 +191,7 @@ public class StableSorterTest {
     }
     
     @Test // 11
-    public void stableSortFiveNumbersTwoPairsTest() throws Exception {
+    public void stableSortFiveNumbersTwoEqualPairsTest() throws Exception {
         final Integer FIRST_INT = 5, SECOND_INT = 3, THIRD_INT = 5, FORTH_INT = 4, FIFTH_INT = 3;
         
         SortableFactory<Integer> sortableFactory = new SortableFactory<>();
@@ -213,5 +211,53 @@ public class StableSorterTest {
         assertEquals(0, result[3].getIndex());
         assertEquals(THIRD_INT, result[4].getPayload());
         assertEquals(2, result[4].getIndex());
+    }
+    
+    @Test // 12
+    public void sortOneCharacterTest() {
+        final Character FIRST_CHAR = 'a';
+        SortableFactory<Character> sortableFactory = new SortableFactory<>();
+        Sortable<Character>[] sortables = sortableFactory.makeSortableArray(FIRST_CHAR);
+        Sortable<Character>[] result = sorter.stableSort(sortables);
+        assertEquals(1, result.length);
+        assertEquals(FIRST_CHAR, result[0].getPayload());
+        assertEquals(0, result[0].getIndex());
+    }
+    
+    @Test // 13
+    public void sortTwoSortedCharactersTest() throws Exception {
+        final Character FIRST_CHAR = 'a', SECOND_CHAR = 'b';
+        
+        SortableFactory<Character> sortableFactory = new SortableFactory<>();
+        Sortable<Character>[] sortables = sortableFactory.makeSortableArray(FIRST_CHAR,
+                                                                            SECOND_CHAR);
+        
+        Sortable<Character>[] result = sorter.stableSort(sortables);
+        assertEquals(2, result.length);
+        assertEquals(FIRST_CHAR, result[0].getPayload());
+        assertEquals(0, result[0].getIndex());
+        assertEquals(SECOND_CHAR, result[1].getPayload());
+        assertEquals(1, result[1].getIndex());
+    }
+    
+    @Test // 14
+    public void stableSortFourNumbersTwoEqualCharactersTest() throws Exception {
+        final Character FIRST_CHAR = 7, SECOND_CHAR = 5, THIRD_CHAR = 4, FORTH_CHAR = 5;
+        
+        SortableFactory<Character> sortableFactory = new SortableFactory<>();
+        Sortable<Character>[] sortables = sortableFactory.makeSortableArray(FIRST_CHAR,
+                                                                            SECOND_CHAR,
+                                                                            THIRD_CHAR, FORTH_CHAR);
+        
+        Sortable<Character>[] result = sorter.stableSort(sortables);
+        assertEquals(4, result.length);
+        assertEquals(THIRD_CHAR, result[0].getPayload());
+        assertEquals(2, result[0].getIndex());
+        assertEquals(SECOND_CHAR, result[1].getPayload());
+        assertEquals(1, result[1].getIndex());
+        assertEquals(FORTH_CHAR, result[2].getPayload());
+        assertEquals(3, result[2].getIndex());
+        assertEquals(FIRST_CHAR, result[3].getPayload());
+        assertEquals(0, result[3].getIndex());
     }
 }
